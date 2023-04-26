@@ -1,0 +1,38 @@
+<section class="section">
+  <h2>My Favorite Movies</h2>
+
+  <!-- <app-create-content
+    (contentAdded)="onContentAdded($event)"
+  ></app-create-content> -->
+  <button mat-raised-button color="primary" (click)="openAddContentDialog()">
+    Add New Movie
+  </button>
+
+  <div>
+    <mat-form-field>
+      <mat-label matTheme="my-custom-theme">Search</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Search"
+        (input)="handleInput($event)"
+      />
+      <button
+        mat-raised-button
+        color="primary"
+        matTheme="my-custom-theme"
+        (click)="searchContent()"
+      >
+        Search
+      </button>
+    </mat-form-field>
+  </div>
+  <p *ngIf="isAvailable">Available</p>
+  <p *ngIf="!isAvailable">Not Available</p>
+  <app-content-card class="featured" [movie]="featuredMovie"></app-content-card>
+  <ul class="content-list">
+    <li *ngFor="let movie of movies">
+      <app-content-card [movie]="movie"></app-content-card>
+    </li>
+  </ul>
+</section>
